@@ -7,4 +7,5 @@ public class Book
     public string Author { get; set; }
     public DateTime Published { get; set; }
     public string Genre { get; set; }
+    public decimal Price { get; set; }
 }
