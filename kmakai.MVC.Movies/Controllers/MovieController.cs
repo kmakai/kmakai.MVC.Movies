@@ -2,6 +2,7 @@
 using kmakai.MVC.Movies.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using static System.Reflection.Metadata.BlobBuilder;
 
 namespace kmakai.MVC.Movies.Controllers;
 
@@ -13,9 +14,15 @@ public class MovieController : Controller
     {
         _context = context;
     }
-    public IActionResult Index()
+    public IActionResult Index(string searchString)
     {
-        var movies = _context.Movies.ToList();
+        var movies = from m in _context.Movies
+                     select m;
+
+        if (!String.IsNullOrEmpty(searchString))
+        {
+            movies = movies.Where(s => s.Title.Contains(searchString));
+        }
 
         return View(movies);
     }

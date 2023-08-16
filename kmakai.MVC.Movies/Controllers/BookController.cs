@@ -15,9 +15,15 @@ public class BookController : Controller
         _context = context;
     }
     
-    public IActionResult Index()
+    public IActionResult Index(string searchString)
     {
-        var books = _context.Books.ToList();
+        var books = from b in _context.Books
+                    select b;
+        if(!String.IsNullOrEmpty(searchString))
+        {
+            books = books.Where(s => s.Title.Contains(searchString) || s.Author.Contains(searchString));
+        }
+
         return View(books);
     }
 

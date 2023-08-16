@@ -8,7 +8,23 @@
 }
 
 <div class="row">
-   <h3>Movies</h3>
+    <div class="col-md-12">
+        <h2>Movie and Book Library</h2>
+        <p>
+            Welcome to the Movie and Book Library. Here you can manage all the movies and books that you have in your library.
+        </p>
+    </div>
+</div>
+
+<form asp-controller="Home" asp-action="Index" method="get">
+    <p>
+        Search: <input type="text" name="searchString" />
+        <input type="submit" value="Search" />
+    </p>
+</form>
+
+<div class="row">
+    <h4>Movies</h4>
     <table class="table">
         <thead>
             <tr>
@@ -53,27 +69,27 @@
         </tbody>
     </table>
 </div>
-    <a asp-controller="Movie" asp-action="Create" class="btn btn-success">Add new movie</a>
+<a asp-controller="Movie" asp-action="Create" class="btn btn-success">Add new movie</a>
 
 <div class="row mt-5">
-    <h3>Books</h3>
+    <h4>Books</h4>
     <table class="table">
         <thead>
             <tr>
                 <th>
-                   Title
+                    Title
                 </th>
                 <th>
                     Author
                 </th>
                 <th>
-                   Published
+                    Published
                 </th>
                 <th>
                     Genre
                 </th>
                 <th>
-                   Price
+                    Price
                 </th>
                 <th></th>
             </tr>

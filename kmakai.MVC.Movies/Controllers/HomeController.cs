@@ -16,10 +16,20 @@ namespace kmakai.MVC.Movies.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string searchString)
         {
-            var movies = _context.Movies.ToList();
-            var books = _context.Books.ToList();
+            
+            var movies = from m in _context.Movies
+                         select m;
+            var books = from b in _context.Books
+                        select b;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                movies = movies.Where(s => s.Title.Contains(searchString));
+                books = books.Where(s => s.Title.Contains(searchString) || s.Author.Contains(searchString));
+            }
+
             ViewData["Movies"] = movies;
             ViewData["Books"] = books;
 

@@ -11,6 +11,12 @@
 </p>
 
 <div class="row">
+    <form asp-controller="Movie" asp-action="Index" method="get">
+        <p>
+            Search: <input type="text" name="searchString" />
+            <input type="submit" value="Search" />
+        </p>
+    </form>
     <table class="table">
         <thead>
             <tr>
