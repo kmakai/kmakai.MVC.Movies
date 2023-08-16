@@ -3,13 +3,10 @@
     ViewBag.Title = "Edit Book";
 }
 
-<h3>Edit book</h3>
-<p>
-    @Model.Title
-</p>
+<h2>Edit book</h2>
+
 
 <div class="row">
-    <h4>Book</h4>
     <hr />
     <form asp-action="Edit">
         <input type="hidden" asp-for="Id" />
